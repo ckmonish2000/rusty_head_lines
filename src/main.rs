@@ -35,11 +35,5 @@ fn get_news() -> Result<Articles,ureq::Error> {
     .call()?
     .into_json()?;
 
-    
-
-    // let body2 = serde_json::from_str(body);
-
-    // println!("{:#?}",body);
-
     Ok(body)
 }
