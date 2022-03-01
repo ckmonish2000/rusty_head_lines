@@ -3,8 +3,8 @@ use ureq::{get};
 
 #[derive(Serialize, Deserialize,Debug)]
 struct Article{
-    // name:String,
     title:String,
+    url:String,
 }
 
 #[derive(Serialize, Deserialize,Debug)]
@@ -21,7 +21,7 @@ fn main() {
 
 
 // function to get news
-fn get_news() -> Result<(),ureq::Error> {
+fn get_news() -> Result<Articles,ureq::Error> {
     let path ="https://newsapi.org/v2/top-headlines?country=us&apiKey=5b9d5eb78659499fa9b0e4d2fee0059a";
     
     let body: Articles = get(path)
@@ -32,7 +32,7 @@ fn get_news() -> Result<(),ureq::Error> {
 
     // let body2 = serde_json::from_str(body);
 
-    println!("{:#?}",body);
+    // println!("{:#?}",body);
 
-    Ok(())
+    Ok(body)
 }
