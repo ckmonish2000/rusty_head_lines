@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use ureq::{get};
+use colored::*;
 
 #[derive(Serialize, Deserialize,Debug)]
 struct Article{
@@ -14,7 +15,13 @@ struct Articles{
 
 
 fn main() {
-    get_news().unwrap();
+    let val =get_news().unwrap();
+    
+    for i in 0..val.articles.len() {
+        println!("{}",val.articles[i].title.green());
+        println!("{}",val.articles[i].url.red());
+        println!("\n");
+    }
    }
 
 
