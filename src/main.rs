@@ -18,8 +18,8 @@ fn main() {
     let val =get_news().unwrap();
     
     for i in 0..val.articles.len() {
-        println!("{}",val.articles[i].title.green());
-        println!("{}",val.articles[i].url.red());
+        println!("{} \t{}",i,val.articles[i].title.green());
+        println!("\t {}",val.articles[i].url.blue());
         println!("\n");
     }
    }
@@ -29,7 +29,7 @@ fn main() {
 
 // function to get news
 fn get_news() -> Result<Articles,ureq::Error> {
-    let path ="https://newsapi.org/v2/top-headlines?country=us&apiKey=5b9d5eb78659499fa9b0e4d2fee0059a";
+    let path ="https://newsapi.org/v2/top-headlines?country=in&apiKey=5b9d5eb78659499fa9b0e4d2fee0059a";
     
     let body: Articles = get(path)
     .call()?
